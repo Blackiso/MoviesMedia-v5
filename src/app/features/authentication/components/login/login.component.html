@@ -1,0 +1,7 @@
+<div class="login-container flex-c">
+	<div class="title">
+		<span>User Login</span>
+	</div>
+	<mm-auth-form [config]="formConfig" button="Login" (form)="login($event)"></mm-auth-form>
+	<a class="other-link" routerLink="/auth/register">Create an Accout!</a>
+</div>

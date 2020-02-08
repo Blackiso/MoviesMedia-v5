@@ -1,0 +1,22 @@
+<div class="options flex">
+	<div class="sort-movies flex">
+		<div class="tag flex">
+			<i class="ri-filter-fill"></i>
+			<span>Sort by: </span>
+		</div>
+		<select #sortSelect>
+			<option value="NF">New First</option>
+			<option value="OF">Old First</option>
+			<option value="YD">Year Des.</option>
+			<option value="YA">Year Asc.</option>
+		</select>
+	</div>
+	<div class="filter-controle">
+		<div class="option-btn" (click)="openFilter()">
+			<i class="ri-equalizer-fill"></i> 
+			<span>Filter</span>
+		</div>
+	</div>
+</div>
+<mm-movies-container (load)="loadMovies($event)" [movies]="movies" [loading]="loading" #moviesContainer>
+</mm-movies-container>

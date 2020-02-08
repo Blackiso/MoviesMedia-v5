@@ -1,0 +1,12 @@
+<div class="more-movies-container section">
+	<div class="section-title flex">
+		<span><i class="ri-clapperboard-fill"></i> <span>MORE MOVIES</span></span>
+	</div>
+	<div class="slider-container flex">
+		<div class="slider-button" (click)="moveSlider(false)"><i class="ri-arrow-left-s-line"></i></div>
+		<mm-slider #moviesSlider [count]="3" class="add-padding">
+			<mm-movie *ngFor="let x of movies" class="movies-slider" [data]="x" [overlay]="true"></mm-movie>
+		</mm-slider>
+		<div class="slider-button" (click)="moveSlider(true)"><i class="ri-arrow-right-s-line"></i></div>
+	</div>
+</div>

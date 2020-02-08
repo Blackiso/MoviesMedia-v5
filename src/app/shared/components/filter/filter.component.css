@@ -1,0 +1,151 @@
+:host {
+	position: fixed;
+	height: 100vh;
+	width: calc(100% - 270px);
+	background: rgba(35, 35, 35, 0.28);
+	left: 0;
+	top: 0;
+	transition: 0.3s;
+	opacity: 0;
+	visibility: hidden;
+}
+
+:host(.display) {
+	opacity: 1;
+	visibility: visible;
+}
+
+.close-bg {
+	height: 100%;
+	width: 100%;
+}
+
+.filter {
+	height: calc(100vh - 50px);
+	width: 270px;
+	background: #1B1C22;
+	position: fixed;
+	right: 0;
+	top: 50px;
+	transform: translateX(270px);
+	transition: 0.3s;
+	border-left: 2px solid #3c3c3c;
+	color: white;
+	padding: 20px 10px;
+	box-sizing: border-box;
+	flex-direction: column;
+	overflow: auto;
+}
+
+:host(.display) > .filter {
+	transform: translateX(0px);
+}
+
+.title {
+	font-size: 20px;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.title > span {
+	margin-right: auto;
+	font-size: 20px;
+	text-transform: uppercase;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
+
+.title > span > i {
+	margin-bottom: 2px;
+	margin-right: 5px;
+}
+
+.close {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.filter-options {
+	flex-direction: column;
+}
+
+.option {
+	margin-bottom: 30px;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.option-close {
+	height: 27px;
+}
+
+.option-title {
+	align-items: center;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #524f4f;
+	padding-bottom: 5px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.option-title > span > i {
+	margin-right: 5px;
+	color: #827e7e;
+}
+
+.option-title > span {
+	margin-right: auto;
+}
+
+.option-title > div {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.option-prop > input,
+.option-prop > select {
+	width: 100%;
+	border: none;
+	background: #383838;
+	box-sizing: border-box;
+	border-radius: 3px; 
+}
+
+.option-prop > input {
+	padding: 10px 15px;
+	border-radius: 3px; 
+}
+
+.option-prop > select > option {
+	padding: 5px 10px;
+	border-bottom: 1px solid #524f4f;
+	color: #e0e0e0;
+}
+
+.button-container {
+	flex-direction: column;
+}
+
+.button-container > button {
+	flex: 1;
+	margin-bottom: 15px;
+}

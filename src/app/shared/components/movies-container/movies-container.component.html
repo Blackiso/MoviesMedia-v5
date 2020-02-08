@@ -1,0 +1,4 @@
+<div class="movies-container flex" (mmScrollBottom)="loadMore()">
+	<mm-loading *ngIf="loading && movies.length == 0"></mm-loading>
+	<mm-movie *ngFor="let movie of movies" class="movies-grid" [data]="movie"></mm-movie>
+</div>

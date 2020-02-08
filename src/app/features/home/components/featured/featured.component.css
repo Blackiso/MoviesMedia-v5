@@ -1,0 +1,161 @@
+:host {
+	position: relative;
+	width: 100%;
+	display: block;
+}
+
+:host(.margin-top) {
+	margin-top: 50px;
+}
+
+:host:hover > .slider-button {
+	opacity: 1;
+}
+
+.slide {
+	width: 100%;
+	height: 70vh;
+	min-height: 600px;
+	transform: skew(15deg);
+	display: inline-block;
+	overflow: hidden;
+}
+
+.slide-image {
+	width: 120%;
+    height: 100%;
+    transform: rotate(15deg);
+    transform: skew(-15deg);
+    background-size: cover;
+    margin-left: -10%;
+}
+
+.slide-content-container {
+	height: 100%;
+	width: 100%;
+	background: rgba(27, 28, 34, 0.4);
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	max-width: 60%;
+	flex-direction: column;
+	color: white;
+	text-align: center;
+}
+
+.title {
+	font-size: 60px;
+	font-weight: 600;
+	line-height: 50px;
+	text-shadow: 0px 0px 20px rgba(49, 49, 49, 0.58);
+	margin-bottom: 10px;
+}
+
+.tagline {
+	font-size: 20px;
+    color: #d6d0d0;
+    margin-bottom: 30px;
+}
+
+.more-info {
+    justify-content: center;
+}
+
+.more-info > div {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
+
+.more-info > div > span {
+	font-size: 27px;
+}
+
+.more-info > div > i {
+	margin-right: 10px;
+	font-size: 20px;
+	color: #F1D807;
+}
+
+.more-info > div:first-of-type {
+	margin-right: 40px;
+	position: relative;
+}
+
+.more-info > div:first-of-type:after {
+	content: '';
+	position: absolute;
+	right: -20px;
+	top: 0;
+	height: 100%;
+	width: 1px;
+	display: block;
+	background: rgba(255, 255, 255, 0.34);
+}
+
+.slider-button {
+    position: absolute;
+    top: 0;
+    height: 70vh;
+	min-height: 600px;
+    width: 100px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    z-index: 20;
+    opacity: 0;
+    transition: .3s;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-button > i {
+	font-size: 50px;
+	color: white;
+}
+
+.right-button {
+	background: linear-gradient(to left, #1b1c22, transparent);
+	right: 0;
+}
+
+.left-button {
+	background: linear-gradient(to right, #1b1c22, transparent);
+	left: 0;
+}
+
+.slides-indicators {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 15;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.slides-indicators > .indicators > span {
+	height: 10px;
+	width: 10px;
+	background: white;
+	display: block;
+	border-radius: 100%;
+	margin-right: 10px;
+	box-shadow: 0px 0px 20px rgba(49, 49, 49, 0.58);
+}
+
+.slides-indicators > .indicators > span:last-of-type {
+	margin-right: 0;
+}
+
+.active {
+	background: #F1D807 !important;
+}

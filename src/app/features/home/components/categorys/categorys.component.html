@@ -1,0 +1,15 @@
+<div class="category-title">
+	<i class="ri-{{icon}}-fill"></i>
+	<span>{{title}}</span>
+</div>
+<div class="slider-container flex">
+	<div class="slider-button" (click)="moveSlider(false)"><i class="ri-arrow-left-s-line"></i></div>
+	<mm-slider #moviesSlider [count]="slidesCount" class="add-padding">
+		<mm-movie *ngFor="let x of movies" class="movies-slider" [data]="x" [overlay]="true"></mm-movie>
+	</mm-slider>
+	<div class="slider-button" (click)="moveSlider(true)"><i class="ri-arrow-right-s-line"></i></div>
+</div>
+<div class="load-more">
+	<span>Load More</span>
+	<i class="ri-arrow-down-s-line"></i>
+</div>

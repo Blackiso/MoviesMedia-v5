@@ -1,0 +1,49 @@
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+form > button {
+	flex: 1;
+}
+
+.inp-grp {
+	display: flex;
+	margin-bottom: 20px;
+	align-items: center;
+	justify-content: center;
+}
+
+.inp-grp:last-of-type {
+	margin-bottom: 30px;
+}
+
+.inp-grp > .lable {
+	display: flex;
+	color: #fdfdfd;
+	align-items: center;
+	font-size: 14px;
+	height: 38px;
+	background: #e4e4e4;
+	position: relative;
+	z-index: 100;
+	margin-right: -5px;
+	border-radius: 4px;
+}
+
+.inp-grp > .lable > i {
+	font-size: 17px;
+	padding-left: 10px;
+	padding-right: 5px;
+	color: #3e3e3e;
+}
+
+.inp-grp > input {
+	height: 38px;
+    padding: 0 10px;
+    width: 280px;
+    border-radius: 4px;
+    border: none;
+    background: #e4e4e4;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.38);
+}

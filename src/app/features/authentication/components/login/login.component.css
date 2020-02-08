@@ -1,0 +1,35 @@
+.title {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #e4e4e4;
+    font-weight: 600;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.78);
+}
+
+.title > span { position: relative; } 
+
+.title > span:after {
+	content: '';
+	width: 50px;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.55);;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: -60px;
+	margin: auto;
+}
+
+.other-link {
+	color: white;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 13px;
+	text-decoration: underline;
+	transition: .3s;
+	cursor: pointer;
+}
+
+.other-link:hover {
+	color: #71cbff;
+}

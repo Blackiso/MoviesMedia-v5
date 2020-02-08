@@ -1,0 +1,50 @@
+<div class="nav-spacer"></div>
+<mm-featured></mm-featured>
+<div class="content-padding flex section">
+	<div class="section-title">
+		<span class="title flex">
+			<i class="ri-clapperboard-fill"></i>
+			<span>Discover Movies</span>
+		</span>
+		<span class="sub-title">Popular movies by categories</span>
+	</div>
+	<mm-categorys icon="emotion-laugh" title="comedy movies"></mm-categorys>
+	<mm-categorys icon="run" title="action movies"></mm-categorys>
+	<mm-categorys icon="star-smile" title="animation movies"></mm-categorys>
+</div>
+<div class="section join-section flex">
+	<div class="section-title">
+		<span class="title flex">
+			<i class="ri-checkbox-circle-fill"></i>
+			<span>Create your Collection</span>
+		</span>
+		<span class="sub-title">Keep track of your collection</span>
+	</div>
+	<div class="join-content flex">
+		<div class="description-container flex">
+			<span>Join <b>MoviesMedia</b> now to get access to more features.</span>
+			<div class="features flex">
+				<div>
+					<i class="ri-checkbox-circle-fill"></i>
+					<span>Collection</span>
+				</div>
+				<div>
+					<i class="ri-user-fill"></i>
+					<span>Profile</span>
+				</div>
+				<div>
+					<i class="ri-bar-chart-fill"></i>
+					<span>Stats</span>
+				</div>
+			</div>
+		</div>
+		<div class="button-container flex">
+			<div class="buttons flex">
+				<button routerLink="/auth/login" class="mm-btn golden-btn" *ngIf="!is_loggedIn">Login</button>
+				<button routerLink="/auth/register" class="mm-btn white-btn" *ngIf="!is_loggedIn">Register</button>
+				<button routerLink="/collection" class="mm-btn golden-btn" *ngIf="is_loggedIn">Collection</button>
+			</div>
+		</div>
+	</div>
+</div>
+<mm-footer></mm-footer>

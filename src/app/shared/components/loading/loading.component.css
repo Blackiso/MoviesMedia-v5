@@ -1,0 +1,30 @@
+:host {
+	width: 100%;
+}
+
+.loading-container {
+	width: 100%;
+	padding: 50px;
+	font-size: 50px;
+	color: #a9a6a6;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	animation-name: rotate;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

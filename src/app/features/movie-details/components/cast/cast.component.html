@@ -1,0 +1,20 @@
+<div class="cast-container flex section">
+	<div class="section-title flex">
+		<span><i class="ri-parent-fill"></i> <span>MOVIE CAST</span></span>
+	</div>
+	<div class="cast-list flex">
+		<div class="cast flex" *ngFor="let actor of viewCast">
+			<div class="cast-image" style="background-image: url('https://image.tmdb.org/t/p/w185/2Dkx4uuGoWFrPSitxdikv9z5azR.jpg');"></div>
+			<div class="cast-info flex">
+				<span class="name">Tom Cruise</span>
+				<span class="role">Ethan Hunt</span>
+			</div>
+		</div>
+	</div>
+	<div class="load-more flex" *ngIf="more" (click)="loadMore()">
+		<span class="flex"><i class="ri-add-fill"></i><span>Load More</span></span>
+	</div>
+	<div class="load-more flex" *ngIf="!more && currentChunk > 0" (click)="loadLess()">
+		<span class="flex"><i class="ri-subtract-fill"></i><span>Close</span></span>
+	</div>
+</div>

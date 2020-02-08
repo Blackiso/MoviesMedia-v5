@@ -1,0 +1,59 @@
+<div class="navigation flex" [class.loading-start]="loading" [class.loading-end]="loadingEnd">
+	<div class="logo-container flex">
+		<img src="/assets/images/mm_logo.png" alt="">
+	</div>
+	<ul class="links-container flex">
+		<li><a routerLink="/home">Home</a></li>
+		<li><a routerLink="/discover">Discover</a></li>
+		<li><a [routerLink]="collectionUrl">Collection</a></li>
+	</ul>
+	<div class="search-container flex">
+		<div class="search flex">
+			<input type="text" placeholder="Search Movies...">
+			<div class="flex"><i class="ri-search-line"></i></div>
+		</div>
+	</div>
+	<div class="button-container flex" *ngIf="!is_loggedIn">
+		<button routerLink="/auth/register" class="mm-btn trasparent-btn">Register</button>
+		<button routerLink="/auth/login" class="mm-btn golden-btn">Login</button>
+	</div>
+	<div class="profile-container flex" *ngIf="is_loggedIn">
+		<div class="notifications-container flex">
+			<i class="ri-notification-2-fill" mmToggle="notifications"></i>
+			<div class="notifications flex-c hide" id="notifications">
+				<div class="noti-head flex">
+					<div class="noti-head-title flex">
+						<i class="ri-notification-2-fill"></i>
+						<span>Notifications</span>
+					</div>
+					<div class="noti-clear flex">
+						<i class="ri-close-circle-fill"></i>
+						<span>Clear all</span>
+					</div>
+				</div>
+				<div class="noti-body flex-c">
+					<div class="noti flex">
+						<span>Maleficent: Mistress of Evil is released!</span>
+						<div class="noti-clear-btn flex">
+							<i class="ri-close-circle-fill"></i>
+						</div>
+					</div>
+					<div class="noti flex">
+						<span>Maleficent: Mistress of Evil is released!</span>
+						<div class="noti-clear-btn flex">
+							<i class="ri-close-circle-fill"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="profile-image-container">
+			<div class="profile-image" style="background-image: url(/assets/images/p_image.png);" mmToggle="profile-drop-menu false"></div>
+			<ul class="profile-drop-menu hide" id="profile-drop-menu">
+				<li><i class="ri-profile-fill"></i><span>Profile</span></li>
+				<li><i class="ri-settings-4-fill"></i><span>Settings</span></li>
+				<li><i class="ri-logout-box-fill"></i><span>Logout</span></li>
+			</ul>
+		</div>
+	</div>
+</div>

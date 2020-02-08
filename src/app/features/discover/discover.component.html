@@ -1,0 +1,7 @@
+<div class="body" [class.body-with-filter]="openFilter && filter">
+	<mm-sub-navigation [data]="navigationData"></mm-sub-navigation>
+	<router-outlet></router-outlet>
+</div>
+<ng-container *ngIf="filter">
+	<mm-filter [class.display]="openFilter"></mm-filter>
+</ng-container>

@@ -1,0 +1,54 @@
+<div class="close-bg" (click)="close()"></div>
+<div class="filter flex">
+	<div class="title flex">
+		<span><i class="ri-equalizer-fill"></i> Filter</span>
+		<div class="close" (click)="close()"><i class="ri-close-fill"></i></div>
+	</div>
+	<form class="filter-options flex" (mmForms)="onSubmit($event)">
+		<div class="option flex">
+			<div (click)="toggleOption($event)" class="option-title flex">
+				<span><i class="ri-price-tag-3-fill"></i> Genre</span>
+				<div><i class="toggle-arrow ri-arrow-down-s-fill"></i></div>
+			</div>
+			<div class="option-prop flex">
+				<select multiple name="cat">
+					<option value="1">Action</option>
+					<option value="2">Comedy</option>
+					<option value="3">Fantasy</option>
+					<option value="4">Animation</option>
+				</select>
+			</div>
+		</div>
+		<div class="option flex">
+			<div (click)="toggleOption($event)" class="option-title flex">
+				<span><i class="ri-calendar-fill"></i> Release Year</span>
+				<div><i class="toggle-arrow ri-arrow-down-s-fill"></i></div>
+			</div>
+			<div class="option-prop flex">
+				<input type="text" placeholder="ex. 2020" name="year">
+			</div>
+		</div>
+		<div class="option flex">
+			<div (click)="toggleOption($event)" class="option-title flex">
+				<span><i class="ri-star-fill"></i> Rating</span>
+				<div><i class="toggle-arrow ri-arrow-down-s-fill"></i></div>
+			</div>
+			<div class="option-prop flex">
+				<input type="text" placeholder="ex. 7.2" name="rating">
+			</div>
+		</div>
+		<div class="option flex">
+			<div (click)="toggleOption($event)" class="option-title flex">
+				<span><i class="ri-user-fill"></i> With Cast</span>
+				<div><i class="toggle-arrow ri-arrow-down-s-fill"></i></div>
+			</div>
+			<div class="option-prop flex">
+				<input type="text" placeholder="ex. Chris Hemsworth" name="cast">
+			</div>
+		</div>
+		<div class="button-container flex">
+			<button type="submit" class="mm-btn">Filter</button>
+			<button *ngIf="is_filtring" type="button" class="mm-btn" (click)="clearFilter()">Clear Filter</button>
+		</div>
+	</form>
+</div>

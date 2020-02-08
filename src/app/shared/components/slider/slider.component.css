@@ -1,0 +1,19 @@
+:host {
+	width: 100%;
+}
+
+:host(.add-padding) > .slider-container {
+	padding: 0 10px;
+}
+
+.slider-container {
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	box-sizing: border-box;
+}
+
+.slide-spacer {
+	display: inline-block;
+	transition: .3s;
+}

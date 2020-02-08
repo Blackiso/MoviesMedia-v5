@@ -1,0 +1,47 @@
+.movies-container {
+	width: 100%;
+	padding: 10px 0px;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
+
+.options {
+	padding: 10px 0;
+    color: #dedede;
+    font-size: 13px;
+}
+
+.search-result {
+	display: flex;
+	align-items: center;
+}
+
+.search-result > i {
+	margin-right: 6px;
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+.filter-controle {
+	margin-left: auto;
+}
+
+.filter-controle > .filter-btn {
+    background: #383838;
+    padding: 5px 10px;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.filter-controle > .filter-btn > i {
+	font-size: 13px;
+    margin-bottom: 2px;
+    margin-right: 5px;
+}

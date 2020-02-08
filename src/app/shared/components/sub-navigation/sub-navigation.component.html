@@ -1,0 +1,10 @@
+<div class="discover">
+	<div class="navigation flex" #container>
+		<div *ngFor="let menu of data">
+			<span (click)="navigate($event)" [id]="menu.id" [attr.data-to]="menu.url">
+				<i class="ri-{{menu.icon}}"></i> {{menu.title}}
+			</span>
+		</div>
+		<span class="border" id="navigation-slide-border"></span>
+	</div>
+</div>

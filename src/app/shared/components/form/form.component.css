@@ -1,3 +1,10 @@
+:host(.btn-fixed) > form > mm-button {
+	width: 305px !important;
+	padding-left: 10px;
+	padding-right: 10px;
+	align-self: center;
+}
+
 form {
 	display: flex;
 	flex-direction: column;
@@ -46,4 +53,15 @@ form > button {
     border: none;
     background: #e4e4e4;
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.38);
+}
+
+.readonly > .lable,
+.readonly > input {
+	background: #2f2f2f;
+	color: white;
+	cursor: default;
+}
+
+.readonly > .lable > i {
+	color: #8c8c8c;
 }

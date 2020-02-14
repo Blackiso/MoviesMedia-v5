@@ -10,8 +10,8 @@ export class UtilService {
 	constructor(private _router:Router, private ar:ActivatedRoute) { }
 
 	navigateTo(location) {
-		let urlArray = location.split('/');
-		this._router.navigate(urlArray);
+		// if(x) location = location.split('/');
+		this._router.navigate([location]);
 	}
 
 	get activeRoute() {
@@ -43,5 +43,10 @@ export class UtilService {
 			form.append(key, data[key]);
 		}
 		return form;
+	}
+
+	goToAuth(url, back?) {
+		let currentUrl = back ? back : window.location.pathname+window.location.search;
+		this.router.navigate(url.split('/'), { queryParams: { back: btoa(currentUrl) } });
 	}
 }

@@ -1,5 +1,5 @@
 <div class="body" [class.body-with-filter]="openFilter && filter">
-	<mm-sub-navigation [data]="navigationData"></mm-sub-navigation>
+	<mm-sub-navigation [config]="navigationData"></mm-sub-navigation>
 	<router-outlet></router-outlet>
 </div>
 <ng-container *ngIf="filter">

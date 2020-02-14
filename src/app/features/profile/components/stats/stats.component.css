@@ -1,0 +1,103 @@
+.main-stats {
+	width: 100%;
+	color: white;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.count {
+	flex: 1;
+	box-sizing: border-box;
+}
+
+.title-section {
+	position: relative;
+	align-self: flex-start;
+	font-size: 15px;
+    color: #c1c0c0;
+}
+
+.title-section:after {
+	position: absolute;
+	content: '';
+	right: -80px;
+    width: 70px;
+	height: 1px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background: #3c3c3c;
+	display: block;
+}
+
+.count > div {
+	align-items: center;
+	font-size: 31px;
+    padding-left: 20px;
+}
+
+.count > div > i {
+	margin-right: 10px;
+    color: #f1d807;
+}
+
+.charts-container {
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+.charts-container > * { flex: 1; }
+
+.movies-year {
+	padding-right: 50px;
+}
+
+.movies-genra {
+	padding-left: 50px;
+	border-left: 1px solid #3c3c3c;
+}
+
+.canvas-container {
+	margin-top: 20px;
+	position: relative;
+}
+
+.canvas-container > canvas {
+	width: 100% !important;
+}
+
+.directors-actors > * { flex: 1; }
+
+.fav-actors { padding-right: 50px; }
+.fav-directors {
+	padding-left: 50px;
+	border-left: 1px solid #3c3c3c;
+}
+
+.people {
+	margin-top: 20px;
+}
+
+.people > div {
+	align-items: center;
+	justify-content: center;
+	color: #6b6b6b;
+	font-size: 13px;
+	text-align: center;
+	width: calc(92%/5);
+	margin-right: 2%;
+}
+
+.people > div:last-of-type {
+	margin-right: 0;
+}
+
+.people > div > .image {
+	width: 50px;
+	height: 50px;
+	background-position: center;
+	background-size: cover;
+	border-radius: 100%;
+	border: 2px solid #f1ffff;
+	margin-bottom: 10px;
+}

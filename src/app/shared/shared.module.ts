@@ -13,6 +13,8 @@ import { MoviesContainerComponent } from './components/movies-container/movies-c
 import { FormsDirective } from './directives/forms.directive';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ToggleElementDirective } from './directives/toggle-element.directive';
+import { FormComponent } from './components/form/form.component';
+import { ButtonComponent } from './components/button/button.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ToggleElementDirective } from './directives/toggle-element.directive';
   	MoviesContainerComponent,
   	FormsDirective,
   	LoadingComponent,
-  	ToggleElementDirective
+  	ToggleElementDirective,
+    FormComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,9 @@ import { ToggleElementDirective } from './directives/toggle-element.directive';
     ScrollBottomDirective,
     MoviesContainerComponent,
     FormsDirective,
-    ToggleElementDirective
+    ToggleElementDirective,
+    FormComponent,
+    ButtonComponent
   ]
 })
 export class SharedModule { }

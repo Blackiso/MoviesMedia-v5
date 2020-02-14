@@ -40,8 +40,8 @@ const routes: Routes = [
 		loadChildren: () => import('@features/home/home.module').then(m => m.HomeModule)
 	},
 	{
-		path: 'auth',
-		loadChildren: () => import('@features/authentication/authentication.module').then(m => m.AuthenticationModule),
+		path: 'profile',
+		loadChildren: () => import('@features/profile/profile.module').then(m => m.ProfileModule)
 	}
 ];
 

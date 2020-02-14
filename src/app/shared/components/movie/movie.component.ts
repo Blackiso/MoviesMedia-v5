@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import { Movie } from '@core/models/movie.model';
-import { MovieDetailsService } from '@core/services/movie-details.service';
 import { UtilService } from '@core/services/util.service';
 
 
@@ -17,7 +16,7 @@ export class MovieComponent implements OnInit {
 	private posterElemnt:HTMLElement;
 	private pressedCtl:boolean = false;
 
-	constructor(private DS:MovieDetailsService, private util:UtilService) {
+	constructor(private util:UtilService) {
 		this.elemntId = util.generateElemntId();
 	}
 

@@ -1,0 +1,38 @@
+:host {
+	display: block;
+}
+
+.flexible {
+	width: 100%;
+}
+
+button {
+	position: relative;
+	overflow: hidden;
+}
+
+.loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	font-size: 25px;
+	color: #272727;
+    background: #F1D807;
+}
+
+.loading > i {
+	animation-name: loading;
+	animation-duration: 1s;
+	animation-iteration-count: infinite; 
+	animation-timing-function: linear;
+}
+
+@keyframes loading {
+	100% {
+		transform: rotate(360deg);
+	}
+}

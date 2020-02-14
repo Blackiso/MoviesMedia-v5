@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { UtilService } from '@core/services/util.service';
 import { MoviesApi } from '@core/interfaces/movies-api';
 
-@Injectable({
-  providedIn: 'root'
-})
+
+@Injectable()
 export class CollectionApiService implements MoviesApi {
 	
 	private url:string = "http://localhost/mm-mock/movies-list.php";

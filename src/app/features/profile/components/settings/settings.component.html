@@ -1,0 +1,18 @@
+<div class="settings flex">
+	<div class="profile-image-settings flex-c">
+		<span class="title-section">Profile Image</span>
+		<div class="image flex">
+			<div style="background-image: url(/assets/images/p_image.png);">
+				<input type="file" class="inp-file" id="inp-file">
+				<label class="select-image flex" for="inp-file">
+					<i class="ri-image-add-fill"></i>
+				</label>
+			</div>
+		</div>
+		<mm-button css="golden-btn">Update Image</mm-button>
+	</div>
+	<div class="profile-details-settings flex-c">
+		<span class="title-section">Account Details</span>
+		<mm-form [config]="formConfig" button="Update Details" (form)="update($event)" class="btn-fixed"></mm-form>
+	</div>
+</div>

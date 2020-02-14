@@ -1,35 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { loginFormConfig } from '../../config/login-form.config';
-import { AuthenticationService } from '../../services/authentication.service';
-import { UserService } from '@core/services/user.service';
-import { UtilService } from '@core/services/util.service';
-
+import { AuthComponent } from '../auth/auth.component';
+import { Subject } from 'rxjs';
+import { LOADING } from '@core/classes/Providers';
 
 @Component({
   selector: 'mm-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [{ provide: LOADING, useFactory: ()=> new Subject<any>() }]
 })
-export class LoginComponent {
+export class LoginComponent extends AuthComponent {
 
 	public formConfig:any = loginFormConfig;
 
-	constructor(
-		private authService:AuthenticationService, 
-		private userService:UserService,
-		private util:UtilService
-	) { }
-
 	login(data) {
-		console.log(data);
-		this.authService.loginService(data).subscribe(
-			data => {
-				console.log(data);
-				this.userService.key = data.key || null;
-				this.userService.authenticate().then((data) => {
-					if (data.auth) this.util.navigateTo('/home');
-				});
-			}
-		);
+		this.authenticate('login', data);
 	}
 }

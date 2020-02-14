@@ -1,0 +1,6 @@
+<button class="mm-btn {{css}}" (click)="clicked()">
+	<ng-content></ng-content>
+	<div *ngIf="loading" class="loading flex">
+		<i class="ri-loader-4-fill"></i>
+	</div>
+</button>

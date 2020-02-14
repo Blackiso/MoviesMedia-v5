@@ -1,9 +1,0 @@
-<form (mmForms)="onSubmit($event)">
-	<div *ngFor="let inp of config" class="inp-grp">
-		<div class="lable">
-			<i class="ri-{{inp.icon}}"></i>
-		</div>
-		<input type="text" [name]="inp.name" [placeholder]="inp.placeholder" [type]="inp.type">
-	</div>
-	<button type="submit" class="mm-btn golden-btn">{{button}}</button>
-</form>

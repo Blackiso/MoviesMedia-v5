@@ -25,7 +25,7 @@
 
 .loading-start:after {
 	opacity: 1;
-	animation: loading;
+	animation: navLoading;
 	animation-duration: 2s;
 }
 
@@ -33,7 +33,7 @@
 	width: 100%;
 }
 
-@keyframes loading {
+@keyframes navLoading {
 	0% {
 		width: 0;
 	}

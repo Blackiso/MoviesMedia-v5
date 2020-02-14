@@ -1,0 +1,73 @@
+<div class="main-stats flex">
+	<div class="seen-count count flex-c">
+		<span class="title-section">Total Watched</span>
+		<div class="flex">
+			<i class="ri-checkbox-circle-fill"></i>
+			<span>620</span>
+		</div>
+	</div>
+	<div class="wlist-count count flex-c">
+		<span class="title-section">Total Watch List</span>
+		<div class="flex">
+			<i class="ri-time-fill"></i>
+			<span>72</span>
+		</div>
+	</div>
+	<div class="time-count count flex-c">
+		<span class="title-section">Total Houres</span>
+		<div class="flex">
+			<i class="ri-timer-fill"></i>
+			<span>300h 20min</span>
+		</div>
+	</div>
+</div>
+<div class="charts-container flex">
+	<div class="movies-year flex-c">
+		<span class="title-section">Movies per Year Chart</span>
+		<div class="canvas-container">
+			<canvas #lineChart>{{ lineChartObj }}</canvas>
+		</div>
+	</div>
+	<div class="movies-genra flex-c">
+		<span class="title-section">Favorite Movies Genra</span>
+		<div class="canvas-container">
+			<canvas #pieChart>{{ pieChartObj }}</canvas>
+		</div>
+	</div>
+</div>
+<div class="directors-actors flex">
+	<div class="fav-actors people-container flex-c">
+		<span class="title-section">Favorite Actors</span>
+		<div class="people flex">
+			<div class="flex-c">
+				<div class="image" style="background-image: url(https://image.tmdb.org/t/p/w185/1YjdSym1jTG7xjHSI0yGGWEsw5i.jpg);"></div>
+				<span>Robert Downey Jr.</span>
+			</div>
+			<div class="flex-c">
+				<div class="image" style="background-image: url(https://image.tmdb.org/t/p/w185/1YjdSym1jTG7xjHSI0yGGWEsw5i.jpg);"></div>
+				<span>Robert Downey Jr.</span>
+			</div>
+			<div class="flex-c">
+				<div class="image" style="background-image: url(https://image.tmdb.org/t/p/w185/1YjdSym1jTG7xjHSI0yGGWEsw5i.jpg);"></div>
+				<span>Robert Downey Jr.</span>
+			</div>
+			<div class="flex-c">
+				<div class="image" style="background-image: url(https://image.tmdb.org/t/p/w185/1YjdSym1jTG7xjHSI0yGGWEsw5i.jpg);"></div>
+				<span>Robert Downey Jr.</span>
+			</div>
+			<div class="flex-c">
+				<div class="image" style="background-image: url(https://image.tmdb.org/t/p/w185/1YjdSym1jTG7xjHSI0yGGWEsw5i.jpg);"></div>
+				<span>Robert Downey Jr.</span>
+			</div>
+		</div>
+	</div>
+	<div class="fav-directors people-container flex-c">
+		<span class="title-section">Favorite Directors</span>
+		<div class="people flex">
+			<div class="flex-c">
+				<div class="image" style="background-image: url(https://image.tmdb.org/t/p/w185/1YjdSym1jTG7xjHSI0yGGWEsw5i.jpg);"></div>
+				<span>Robert Downey Jr.</span>
+			</div>
+		</div>
+	</div>
+</div>

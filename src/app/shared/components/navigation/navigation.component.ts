@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { UserService } from '@core/services/user.service';
+import { UtilService } from '@core/services/util.service';
 
 @Component({
   selector: 'mm-navigation',
@@ -14,11 +15,8 @@ export class NavigationComponent implements OnInit {
 	public loadingEnd:boolean = false;
 	public is_loggedIn:boolean = false;
 
-	constructor(private router: Router, private userService:UserService) {
-		userService.is_loggedIn().subscribe(x => {
-			this.is_loggedIn = x;
-			this.collectionUrl = !this.is_loggedIn ? '/auth/login' : '/collection';
-		});
+	constructor(private router: Router, private userService:UserService, public util:UtilService) {
+		userService.is_loggedIn().subscribe(x => this.is_loggedIn = x);
 	}
 
 	ngOnInit() {
@@ -40,6 +38,14 @@ export class NavigationComponent implements OnInit {
 					break;
 			}
 		});
+	}
+
+	collection() {
+		if (this.is_loggedIn) {
+			this.util.navigateTo('/collection');
+		}else {
+			this.util.goToAuth('/login', '/collection');
+		}
 	}
 
 }

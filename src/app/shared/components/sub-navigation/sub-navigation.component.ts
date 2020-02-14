@@ -9,7 +9,7 @@ import { NavigationEnd } from '@angular/router';
 })
 export class SubNavigationComponent implements OnInit {
 
-	@Input() data:any;
+	@Input() config:any;
 	private routerEventSubscription:any;
 
 	constructor(private util:UtilService) { }
@@ -32,6 +32,8 @@ export class SubNavigationComponent implements OnInit {
 		let elem = document.getElementById(id) as HTMLElement;
 		if (elem !== null) {
 			this.setBorder(elem);
+		}else {
+			this.setBorder(document.getElementById(this.config[0].id));
 		}
 	}
 

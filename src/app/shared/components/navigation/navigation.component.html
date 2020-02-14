@@ -5,7 +5,7 @@
 	<ul class="links-container flex">
 		<li><a routerLink="/home">Home</a></li>
 		<li><a routerLink="/discover">Discover</a></li>
-		<li><a [routerLink]="collectionUrl">Collection</a></li>
+		<li><a (click)="collection()">Collection</a></li>
 	</ul>
 	<div class="search-container flex">
 		<div class="search flex">
@@ -14,8 +14,8 @@
 		</div>
 	</div>
 	<div class="button-container flex" *ngIf="!is_loggedIn">
-		<button routerLink="/auth/register" class="mm-btn trasparent-btn">Register</button>
-		<button routerLink="/auth/login" class="mm-btn golden-btn">Login</button>
+		<button (click)="util.goToAuth('register')" class="mm-btn trasparent-btn">Register</button>
+		<button (click)="util.goToAuth('login')" class="mm-btn golden-btn">Login</button>
 	</div>
 	<div class="profile-container flex" *ngIf="is_loggedIn">
 		<div class="notifications-container flex">
@@ -50,8 +50,8 @@
 		<div class="profile-image-container">
 			<div class="profile-image" style="background-image: url(/assets/images/p_image.png);" mmToggle="profile-drop-menu false"></div>
 			<ul class="profile-drop-menu hide" id="profile-drop-menu">
-				<li><i class="ri-profile-fill"></i><span>Profile</span></li>
-				<li><i class="ri-settings-4-fill"></i><span>Settings</span></li>
+				<li routerLink="/profile"><i class="ri-profile-fill"></i><span>Profile</span></li>
+				<li routerLink="/profile/settings"><i class="ri-settings-4-fill"></i><span>Settings</span></li>
 				<li><i class="ri-logout-box-fill"></i><span>Logout</span></li>
 			</ul>
 		</div>

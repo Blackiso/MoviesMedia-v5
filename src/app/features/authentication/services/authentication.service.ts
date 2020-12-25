@@ -8,7 +8,7 @@ import { UserService } from '@core/services/user.service';
 })
 export class AuthenticationService {
 
-	private loginUrl:string = "http://localhost/mm-mock/login.php";
+	private loginUrl:string = "/mock/login.php";
 
 	constructor(
 		private http:HttpClient, 

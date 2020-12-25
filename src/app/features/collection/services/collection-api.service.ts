@@ -7,7 +7,7 @@ import { MoviesApi } from '@core/interfaces/movies-api';
 @Injectable()
 export class CollectionApiService implements MoviesApi {
 	
-	private url:string = "http://localhost/mm-mock/movies-list.php";
+	private url:string = "/mock/movies-list.php";
 	private params:any = {}; 
 
 	constructor(private http:HttpClient, private util:UtilService) {}

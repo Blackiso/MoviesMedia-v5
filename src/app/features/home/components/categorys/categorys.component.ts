@@ -7,7 +7,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 })
 export class CategorysComponent implements OnInit {
 
-	@ViewChild('moviesSlider', {static: false}) slider:any;
+	@ViewChild('moviesSlider') slider:any;
 	@Input() title:string;
 	@Input() icon:string;
 	public slidesCount:number;

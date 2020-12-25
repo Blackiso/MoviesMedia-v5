@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, ElementRef, Renderer, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ElementRef, HostBinding, Renderer2 } from '@angular/core';
 import { UtilService } from '@core/services/util.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute, NavigationStart, NavigationEnd, ActivationEnd } from '@angular/router';
@@ -190,7 +190,7 @@ export class MovieDetailsComponent implements OnInit {
 		private util:UtilService, 
 		private location:Location, 
 		private elementRef:ElementRef, 
-		private renderer:Renderer,
+		private renderer:Renderer2,
 		private activeRoute:ActivatedRoute
 	) {
 	}

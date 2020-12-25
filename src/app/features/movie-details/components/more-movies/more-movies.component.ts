@@ -8,7 +8,7 @@ import { UtilService } from '@core/services/util.service';
 })
 export class MoreMoviesComponent implements OnInit {
 
-	@ViewChild('moviesSlider', {static: false}) moviesSlider:any;
+	@ViewChild('moviesSlider') moviesSlider:any;
 	@Input() movies:any;
 	private slidesCount:number;
 

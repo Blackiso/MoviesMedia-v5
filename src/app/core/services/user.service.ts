@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UserService {
 
-	private authUrl:string = "http://localhost/mm-mock/auth.php";
+	private authUrl:string = "/mock/auth.php";
 	private _is_loggedIn = new BehaviorSubject<boolean>(false);
 	private _username:string;
 	private _key:string;
@@ -44,6 +44,11 @@ export class UserService {
 					this.set_is_loggedIn(res.auth || false);
 					if (this._is_loggedIn) this._username = res.username;
 					resolve(res);
+				})
+				.catch(err => {
+					console.log(err);
+					this.set_is_loggedIn(false);
+					resolve();
 				});
 		});
 	}

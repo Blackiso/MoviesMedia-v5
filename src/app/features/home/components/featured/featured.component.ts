@@ -8,7 +8,7 @@ import { UtilService } from '@core/services/util.service';
 })
 export class FeaturedComponent implements OnInit {
 
-	@ViewChild('featuredSlider', {static: false}) featuredSlider:any;
+	@ViewChild('featuredSlider') featuredSlider:any;
 	private sliderInterval:any;
 	currentSlide:number = 1;
 	slideCount:number = 6;

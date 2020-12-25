@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
 
@@ -7,19 +7,19 @@ import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 })
 export class UtilService {
 
-	constructor(private _router:Router, private ar:ActivatedRoute) { }
+	constructor(private _injector:Injector) { }
 
 	navigateTo(location) {
 		// if(x) location = location.split('/');
-		this._router.navigate([location]);
+		this.router.navigate([location]);
 	}
 
 	get activeRoute() {
-		return this.ar;
+		return this._injector.get(ActivatedRoute);
 	}
 
 	get router() {
-		return this._router;
+		return this._injector.get(Router);
 	}
 
 	generateElemntId() {

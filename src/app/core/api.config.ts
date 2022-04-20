@@ -9,6 +9,7 @@ export const ENDPOINTS:any = {
 	login: BASE_URL+'/authentication/login',
 	register: BASE_URL+'/authentication/register',
 	authenticate: BASE_URL+'/authentication/authenticate',
+
 	collection: BASE_URL+'/collection/:type',
 	collection_add: BASE_URL+'/collection'
 }

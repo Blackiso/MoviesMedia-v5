@@ -6,11 +6,9 @@ export const ENDPOINTS:any = {
 	details: BASE_URL+'/movies/details/:id',
 	filter: BASE_URL+'/movies/filter',
 	search: BASE_URL+'/movies/search',
-
 	login: BASE_URL+'/authentication/login',
 	register: BASE_URL+'/authentication/register',
 	authenticate: BASE_URL+'/authentication/authenticate',
-
 	collection: BASE_URL+'/collection/:type',
 	collection_add: BASE_URL+'/collection'
 }

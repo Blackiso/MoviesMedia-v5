@@ -46,7 +46,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   providers: [{	provide: RouteReuseStrategy, useClass: CustomRouteReuseStategy }],
   exports: [RouterModule]
 })

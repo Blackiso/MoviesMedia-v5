@@ -1,9 +1,9 @@
 <div class="poster">
 	<div class="collection flex">
-		<i class="ri-checkbox-circle-fill"></i>
-		<i class="ri-time-fill"></i>
+		<i (click)="addToCollection('watched')" class="ri-checkbox-circle-fill" [ngClass]="{ gold: data.collection.watched }"></i>
+		<i (click)="addToCollection('watchlist')" class="ri-time-fill" [ngClass]="{ gold: data.collection.watchlist }"></i>
 	</div>
-	<img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" alt="" [id]="elemntId">
+	<img src="https://image.tmdb.org/t/p/w342{{data.poster_path}}" alt="" [id]="elemntId">
 </div>
 <div class="details flex">
 	<span class="title">{{ data.title }}</span>

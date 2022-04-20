@@ -9,9 +9,16 @@ export class UtilService {
 
 	constructor(private _injector:Injector) { }
 
-	navigateTo(location) {
-		// if(x) location = location.split('/');
-		this.router.navigate([location]);
+	navigateTo(location, querys = {}) {
+		if (typeof location === 'string') {
+			location = location.split('/');
+
+			if (location[0] == '') {
+				location.shift();
+				location[0] = '/'+location[0];
+			}
+		}
+		this.router.navigate(location, { queryParams: querys });
 	}
 
 	get activeRoute() {

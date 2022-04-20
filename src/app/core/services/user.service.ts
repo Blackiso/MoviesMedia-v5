@@ -2,53 +2,83 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UtilService } from '@core/services/util.service';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ENDPOINTS } from '@core/api.config';
+import { LocalStorage } from '@core/classes/LocalStorage';
 
+interface Token {
+	token:string;
+	expiration:number;
+	tokenId:string;
+}
+
+export interface User {
+	id:string;
+	username:string;
+	profile_image:string;
+	email:string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-	private authUrl:string = "/mock/auth.php";
-	private _is_loggedIn = new BehaviorSubject<boolean>(false);
-	private _username:string;
-	private _key:string;
+	private login_state = new BehaviorSubject<boolean>(false);
+	private token_data:Token | null = null;
 
-	constructor(private http:HttpClient, private util:UtilService) { }
+	private user:User;
 
-	is_loggedIn() {
-		return this._is_loggedIn.asObservable();
+	constructor(private http:HttpClient, private util:UtilService, private localStorage:LocalStorage) { }
+
+	loginState():Observable<boolean> {
+		return this.login_state.asObservable();
 	}
 
-	set_is_loggedIn(x) {
-		this._is_loggedIn.next(x);
+	loginStateValue():boolean {
+		return this.login_state.getValue();
 	}
 
-	get is_loggedInValue() {
-		return this._is_loggedIn.getValue();
+	setLoginState(value:boolean) {
+		this.login_state.next(value);
 	}
 
-	get key() {
-		return  this._key;
+	userInfo():User {
+		return this.user;
 	}
 
-	set key(x) {
-		this._key = x;
+	setToken(data:Token) {
+		this.token_data = data;
+	}
+
+	saveToken() {
+		this.localStorage.add('JWT', JSON.stringify(this.token_data));
+	}
+
+	loadToken() {
+		this.token_data = JSON.parse(this.localStorage.get('JWT'));
+	}
+
+	getToken():string | null {
+		return this.token_data !== null ? this.token_data.token : null;
 	}
 
 	authenticate() {
 		return new Promise<any>((resolve, reject) => {
-			this.http.get<any>(this.authUrl)
+			this.http.get<any>(ENDPOINTS.authenticate)
 				.toPromise()
 				.then(res => {
-					this.set_is_loggedIn(res.auth || false);
-					if (this._is_loggedIn) this._username = res.username;
+					if(res.id) {
+						this.user = res;
+						this.setLoginState(true);
+					}else {
+						this.setLoginState(false);
+					}
 					resolve(res);
 				})
 				.catch(err => {
 					console.log(err);
-					this.set_is_loggedIn(false);
-					resolve();
+					this.setLoginState(false);
+					resolve(false);
 				});
 		});
 	}

@@ -83,12 +83,14 @@
 	color: white;
 }
 
-.search-container > .search > div {
+.search-container > .search > button {
 	background: #23242A;
 	color: white;
 	padding: 0 15px;
 	box-sizing: border-box;
 	align-items: center;
+	border: none;
+	cursor: pointer;
 }
 
 .button-container {

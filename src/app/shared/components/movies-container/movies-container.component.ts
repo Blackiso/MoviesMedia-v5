@@ -9,19 +9,14 @@ export class MoviesContainerComponent {
 
 	@Input() movies:any;
 	@Input() loading:boolean;
-	@Output() load = new EventEmitter<number>();
-	private page:number = 1;
+	@Output() load = new EventEmitter<boolean>();
 
 	constructor() {}
 
 	loadMore() {
 		if (!this.loading) {
-			this.page++;
-			this.load.emit(this.page);
+			this.load.emit(true);
 		}
 	}
 
-	resetPage() {
-		this.page = 1;
-	}
 }

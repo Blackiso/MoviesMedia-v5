@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { registerFormConfig } from '../../config/register-form.config';
 import { Subject } from 'rxjs';
 import { LOADING } from '@core/classes/Providers';
+import { AuthComponent } from '../auth/auth.component';
 
 @Component({
   selector: 'mm-register',
@@ -9,17 +10,12 @@ import { LOADING } from '@core/classes/Providers';
   styleUrls: ['./register.component.css'],
   providers: [{ provide: LOADING, useFactory: ()=> new Subject<any>() }]
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent extends AuthComponent {
 
 	public formConfig:any = registerFormConfig;
 
-	constructor() { }
-
-	ngOnInit() {
-	}
-
 	register(data) {
-		console.log(data);
+		this.authenticate('register', data);
 	}
 
 }

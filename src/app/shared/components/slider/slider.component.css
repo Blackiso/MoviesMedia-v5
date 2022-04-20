@@ -2,10 +2,6 @@
 	width: 100%;
 }
 
-:host(.add-padding) > .slider-container {
-	padding: 0 10px;
-}
-
 .slider-container {
 	width: 100%;
 	overflow: hidden;

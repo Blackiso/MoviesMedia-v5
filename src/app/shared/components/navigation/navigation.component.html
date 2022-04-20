@@ -8,10 +8,10 @@
 		<li><a (click)="collection()">Collection</a></li>
 	</ul>
 	<div class="search-container flex">
-		<div class="search flex">
-			<input type="text" placeholder="Search Movies...">
-			<div class="flex"><i class="ri-search-line"></i></div>
-		</div>
+		<form class="search flex" (mmForms)="search($event)">
+			<input type="text" name="keyword" placeholder="Search Movies..." >
+			<button class="flex"><i class="ri-search-line"></i></button>
+		</form>
 	</div>
 	<div class="button-container flex" *ngIf="!is_loggedIn">
 		<button (click)="util.goToAuth('register')" class="mm-btn trasparent-btn">Register</button>

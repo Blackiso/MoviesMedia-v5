@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { AbstractMoviesComponent } from '@shared/components/abstract-movies/abstract-movies.component';
 import { CollectionApiService } from '../../services/collection-api.service';
-import { MoviesContainerComponent } from '@shared/components/movies-container/movies-container.component';
 import { FilterService } from '@core/services/filter.service';
 
 
@@ -12,37 +11,28 @@ import { FilterService } from '@core/services/filter.service';
 })
 export class WatchedComponent extends AbstractMoviesComponent {
 
-	@ViewChild('sortSelect', {static: true}) sortSelect:ElementRef;
-	@ViewChild('moviesContainer', {static: true}) moviesContainer:MoviesContainerComponent;
-	private selectElemnt:HTMLSelectElement;
-	private filterSub:any;
-	public type = 'watched';
-	public page:number;
+	public type:string = 'watched';
+	public order:string = 'NF';
 
-	constructor(private apiImpl:CollectionApiService, private filter:FilterService) {
-		super(apiImpl);
+	constructor(private apiImpl:CollectionApiService, protected filter:FilterService) {
+		super(apiImpl, filter);
 	}
 
 	ngAfterViewInit() {
-		this.filter.loadFilter(true);
-		this.selectElemnt = this.sortSelect.nativeElement;
-		this.selectElemnt.addEventListener('change', this.sortMovies.bind(this));
-		this.filterSub = this.filter.dataEvent().subscribe(data => this.filterMovies(data));
+		this.loadFiler();
 	}
 
-	sortMovies() {
-		this.api.setParams({sort: this.selectElemnt.value});
-		this.moviesContainer.resetPage();
-		this.loadMovies(false, true);
+	ngOnInit() {
+		this.loadMovies(1);
 	}
 
-	openFilter() {
-		this.filter.toggleFilter();
+	sortMovies(value) {
+		this.order = value;
+		this.loadMovies(1);
 	}
 
 	ngOnDestroy() {
-		this.selectElemnt.removeEventListener('change', this.sortMovies.bind(this));
-		this.filterSub.unsubscribe();
-		this.filter.loadFilter(false);
+		this.unloadFilter();
 	}
+	
 }

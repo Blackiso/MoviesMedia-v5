@@ -14,11 +14,7 @@
 	display: inline-block;
 }
 
-:host(.movies-slider):last-of-type {
-	margin-right: 0;
-}
-
-:host(.movies-grid):nth-of-type(6n) {
+:host:nth-of-type(6n) {
 	margin-right: 0;
 }
 
@@ -41,8 +37,13 @@
 
 .collection > i {
 	color: white;
-	font-size: 18px;
+	font-size: 20px;
 	margin-left: 10px;
+	transition: color .3s;
+}
+
+.collection > i:hover {
+	color: #c9c9c9;
 }
 
 .collection > i:first-of-type {
@@ -82,4 +83,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+.gold {
+	color: gold !important;
 }

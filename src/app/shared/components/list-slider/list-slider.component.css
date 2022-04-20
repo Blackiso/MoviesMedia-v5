@@ -1,6 +1,6 @@
-.more-movies-container {
-	padding: 0 20px;
-	box-sizing: border-box;
+:host {
+	display: flex;
+	width: 100%;
 }
 
 .slider-button {

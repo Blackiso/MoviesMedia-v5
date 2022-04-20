@@ -4,5 +4,8 @@ export class Movie {
 	poster_path:string;
 	release_year:number;
 	title:string;
-	collection:object;
+	collection:{
+		watchlist:boolean;
+		watched:boolean;
+	};
 }

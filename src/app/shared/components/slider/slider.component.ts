@@ -31,7 +31,6 @@ export class SliderComponent implements OnInit {
 	ngAfterViewInit() {
 		this.slider = document.querySelector("#"+this.sliderId) as HTMLElement;
 		this.spacer = document.querySelector("#"+this.spacerId) as HTMLElement;
-		this.initSlider();
 	}
 
 	moveSlider(direction) {
@@ -44,23 +43,16 @@ export class SliderComponent implements OnInit {
 			}
 		}
 
-		let width = window.getComputedStyle(this.slider, null).getPropertyValue("width");
-		let margin;
+		let width = this.slider.getBoundingClientRect().width;
 
 		if (direction) {
-			margin = Number.parseInt(width)*this.currentSlide;
+			this.spacer.style.marginLeft = -(width*this.currentSlide)+"px";
 			this.currentSlide++;
 		}else {
+			let currentMargin = parseInt(window.getComputedStyle(this.spacer).marginLeft);
+			this.spacer.style.marginLeft = (currentMargin + width)+"px";
 			this.currentSlide--;
-			margin = (Number.parseInt(width)*this.currentSlide) - Number.parseInt(width);
 		}
-
-		this.spacer.style.marginLeft = "-"+margin+"px";
 	}
 
-	initSlider() {
-		let width = window.getComputedStyle(this.slider, null).getPropertyValue("width");
-		let margin = Number.parseInt(width)*(this.currentSlide - 1);
-		this.spacer.style.marginLeft = "-"+margin+"px";
-	}
 }

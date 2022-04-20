@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'mm-youtube-video',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./youtube-video.component.css']
 })
 export class YoutubeVideoComponent implements OnInit {
+
+	@Input() url:string;
 
 	constructor() { }
 

@@ -1,6 +1,6 @@
 <div class="options flex">
-	<div class="search-result">
-		<i class="ri-file-search-fill"></i> 523 Search results found for "iron man"
+	<div *ngIf="filterObject.keyword" class="search-result">
+		<i class="ri-file-search-fill"></i> {{totalResults}} Search results found for "{{filterObject.keyword}}"
 	</div>
 	<div class="filter-controle">
 		<div class="filter-btn" (click)="openFilter()">
@@ -9,4 +9,4 @@
 		</div>
 	</div>
 </div>
-<mm-movies-container (load)="loadMovies($event)" [movies]="movies" [loading]="loading"></mm-movies-container>
+<mm-movies-container (load)="loadMovies()" [movies]="movies" [loading]="loading"></mm-movies-container>

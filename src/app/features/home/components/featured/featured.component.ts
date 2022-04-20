@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, HostListener, OnDestroy, Input } from '@angular/core';
 import { UtilService } from '@core/services/util.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { UtilService } from '@core/services/util.service';
 export class FeaturedComponent implements OnInit {
 
 	@ViewChild('featuredSlider') featuredSlider:any;
+	@Input() featured:any = null;
 	private sliderInterval:any;
 	currentSlide:number = 1;
 	slideCount:number = 6;
@@ -17,6 +18,7 @@ export class FeaturedComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		console.log(this.featured);
 	}
 
 	ngAfterViewInit() {

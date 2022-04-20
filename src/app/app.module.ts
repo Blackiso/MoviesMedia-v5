@@ -14,7 +14,10 @@ import { SharedModule } from '@shared/shared.module';
 import { AuthenticationModule } from '@features/authentication/authentication.module';
 
 export function UserAuthFactory(service:UserService) {
-	return () => service.authenticate();
+	return () => {
+		service.loadToken();
+		service.authenticate();
+	}
 }
 
 @NgModule({

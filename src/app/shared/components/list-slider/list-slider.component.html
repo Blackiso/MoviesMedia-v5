@@ -1,0 +1,5 @@
+<div class="slider-button slider-button-left" (click)="moveSlider(false)"><i class="ri-arrow-left-s-line"></i></div>
+<mm-slider #moviesSlider [count]="slidesCount" class="add-padding">
+	<mm-movie *ngFor="let x of movies" class="movies-slider" [data]="x" [overlay]="true"></mm-movie>
+</mm-slider>
+<div class="slider-button slider-button-right" (click)="moveSlider(true)"><i class="ri-arrow-right-s-line"></i></div>

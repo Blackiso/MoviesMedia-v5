@@ -10,16 +10,12 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-		let _url = request.urlWithParams;
-		if (this.userService.key !== undefined) {
-			let ex = request.urlWithParams.includes('?') ? '&' : '?';
-			_url += ex+'key='+this.userService.key;
+		if (this.userService.getToken() !== null) {
+			request = request.clone({ 
+				headers: request.headers.set('Authorization', `Bearer ${this.userService.getToken()}`),
+			});
 		}
 		
-		request = request.clone({
-			url: _url
-		});
-
 		return next.handle(request);
     }
 }

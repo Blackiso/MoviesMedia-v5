@@ -4,11 +4,11 @@
 			<i class="ri-filter-fill"></i>
 			<span>Sort by: </span>
 		</div>
-		<select #sortSelect>
+		<select (change)="sortMovies($event.currentTarget.value)">
 			<option value="NF">New First</option>
 			<option value="OF">Old First</option>
-			<option value="YD">Year Des.</option>
-			<option value="YA">Year Asc.</option>
+			<option value="YD">Release Date Des.</option>
+			<option value="YA">Release Date Asc.</option>
 		</select>
 	</div>
 	<div class="filter-controle">
@@ -18,5 +18,4 @@
 		</div>
 	</div>
 </div>
-<mm-movies-container (load)="loadMovies($event)" [movies]="movies" [loading]="loading" #moviesContainer>
-</mm-movies-container>
+<mm-movies-container (load)="loadMovies()" [movies]="movies" [loading]="loading"></mm-movies-container>

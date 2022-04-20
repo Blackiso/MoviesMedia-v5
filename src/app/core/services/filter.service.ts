@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { FilterObject } from '@shared/interfaces';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,9 @@ export class FilterService {
 	private filterState:boolean = false;
 	private event = new Subject<boolean>();
 	private filter = new Subject<boolean>();
-	private data = new Subject<any>();
+	private data = new Subject<FilterObject>();
 	
+
 	constructor() { }
 
 	toggleFilter() {
@@ -18,23 +20,23 @@ export class FilterService {
 		this.event.next(this.filterState);
 	}
 
-	loadFilter(x) {
+	loadFilter(x:boolean) {
 		this.filter.next(x);
 	}
 
-	filterEvent() {
+	filterEvent():Observable<boolean> {
 		return this.filter.asObservable();
 	}
 
-	setData(data) {
+	setData(data:FilterObject) {
 		this.data.next(data);
 	}
 
-	mainEvent() {
+	mainEvent():Observable<boolean> {
 		return this.event.asObservable();
 	}
 
-	dataEvent() {
+	dataEvent():Observable<FilterObject> {
 		return this.data.asObservable();
 	}
 }

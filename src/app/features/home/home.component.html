@@ -1,5 +1,7 @@
 <div class="nav-spacer"></div>
-<mm-featured></mm-featured>
+<ng-template [ngIf]="featured_loaded">
+	<mm-featured [featured]="featured"></mm-featured>
+</ng-template>
 <div class="content-padding flex section">
 	<div class="section-title">
 		<span class="title flex">
@@ -8,9 +10,9 @@
 		</span>
 		<span class="sub-title">Popular movies by categories</span>
 	</div>
-	<mm-categorys icon="emotion-laugh" title="comedy movies"></mm-categorys>
-	<mm-categorys icon="run" title="action movies"></mm-categorys>
-	<mm-categorys icon="star-smile" title="animation movies"></mm-categorys>
+	<mm-categorys icon="emotion-laugh" title="comedy movies" category="35"></mm-categorys>
+	<mm-categorys icon="run" title="action movies" category="28"></mm-categorys>
+	<mm-categorys icon="star-smile" title="animation movies" category="16"></mm-categorys>
 </div>
 <div class="section join-section flex">
 	<div class="section-title">

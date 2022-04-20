@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FilterService } from '@core/services/filter.service';
 import { AbstractMoviesComponent } from '@shared/components/abstract-movies/abstract-movies.component';
 import { DiscoverService } from '../../services/discover.service';
@@ -11,21 +12,30 @@ import { DiscoverService } from '../../services/discover.service';
 })
 export class SearchComponent extends AbstractMoviesComponent {
 
-	public type = 'popular';
+	public type = 'search';
 
-	constructor(private filter:FilterService, private _api:DiscoverService) {
-		super(_api);
+	constructor(protected filter:FilterService, private _api:DiscoverService, private route:ActivatedRoute) {
+		super(_api, filter);
 	} 
 
-	ngAfterViewInit() {
-		this.filter.loadFilter(true);
+	ngOnInit() {
+
+		this.route.queryParams.subscribe(params => {
+	        if ('keyword' in params) {
+	        	this.filterObject.keyword = params['keyword'];
+				this.loadMovies(1);
+	        }
+	    });
+
+		this.loadMovies(1);
 	}
 
-	openFilter() {
-		this.filter.toggleFilter();
+	ngAfterViewInit() {
+		this.loadFiler();
 	}
 
 	ngOnDestroy() {
-		this.filter.loadFilter(false);
+		this.unloadFilter();
 	}
+
 }

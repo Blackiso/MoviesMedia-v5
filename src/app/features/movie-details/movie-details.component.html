@@ -1,65 +1,75 @@
 <div class="nav-spacer"></div>
 <span class="close-details" (click)="closeDetails()"><i class="ri-close-fill"></i></span>
 <div class="main-container" [class.video-active]="openVideo">
-	<div class="backdrop-image" style="background-image: url('https://image.tmdb.org/t/p/w1280/aw4FOsWr2FY373nKSxbpNi3fz4F.jpg');">
-		<div class="play-video-button" *ngIf="!openVideo" (click)="openVideo = true">
-			<i class="ri-play-circle-fill"></i>
-		</div>
-		<div class="close-video-button" *ngIf="openVideo" (click)="openVideo = false">
-			<i class="ri-close-circle-fill"></i>
-		</div>
-		<div class="video-container" *ngIf="openVideo">
-			<mm-youtube-video></mm-youtube-video>
-		</div>
-	</div>
-	<div class="details-container flex wide">
-		<div class="poster flex">
-			<img src="https://image.tmdb.org/t/p/w500/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg" alt="">
-			<div class="more-dets flex">
-				<span class="year">2018</span> | <span class="pg">R</span> | <span class="runtime">2h30min</span>
-			</div>
-		</div>
-		<div class="details flex">
-			<div class="collection flex">
-				<div class="watched flex" (click)="closeDetails()">
-					<i class="ri-checkbox-circle-fill"></i>
-					 Watched
-				</div>
-				<div class="watchlist flex">
-					<i class="ri-time-fill"></i>
-					 Watchlist
-				</div>
-			</div>
-			<div class="title">
-				<span>MISSION: IMPOSSIBLE - FALLOUT</span>
-				<span class="rating">7.3</span>
-			</div>
-			<span class="sub-title">Some Missions Are Not A Choice</span>
-			<div class="dets">
-				<span><b>Genres</b></span>
-				<span>Action, Adventure.</span>
-			</div>
-			<div class="dets">
-				<span><b>Production</b></span>
-				<span>Paramount, Bad Robot, Skydance Media, TC Productions, Alibaba Pictures Group, Alibaba Pictures Group.</span>
-			</div>
-			<div class="dets">
-				<span><b>Director</b></span> 
-				<span>Christopher McQuarrie.</span>
-			</div>
-			<div class="dets">
-				<span><b>Budget</b></span>
-				<span>178M Dollars.</span>
-			</div>
-			<div class="dets">
-				<span><b>Box office</b></span> 
-				<span>791M Dollars.</span>
-			</div>
-			<p class="story">When an IMF mission ends badly, the world is faced with dire consequences. As Ethan Hunt takes it upon himself to fulfill his original briefing, the CIA begin to question his loyalty and his motives. The IMF team find themselves in a race against time, hunted by assassins while trying to prevent a global catastrophe.</p>
-		</div>
-	</div>
-	<div class="wide">
-		<mm-cast [cast]="movieCast"></mm-cast>
-		<mm-more-movies [movies]="movies"></mm-more-movies>
-	</div>
+    <div class="loader" *ngIf="loading">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <ng-container *ngIf="movieData">
+        <div class="backdrop-image" style="background-image: url('https://image.tmdb.org/t/p/w1280/{{movieData.backdrop_path}}');">
+            <div class="play-video-button" *ngIf="!openVideo" (click)="openVideo = true">
+                <i class="ri-play-circle-fill"></i>
+            </div>
+            <div class="close-video-button" *ngIf="openVideo" (click)="openVideo = false">
+                <i class="ri-close-circle-fill"></i>
+            </div>
+            <div class="video-container" *ngIf="openVideo">
+                <mm-youtube-video [url]="movieData.trailer.url"></mm-youtube-video>
+            </div>
+        </div>
+        <div class="details-container flex wide">
+            <div class="poster flex">
+                <img src="https://image.tmdb.org/t/p/w500/{{movieData.poster_path}}" alt="">
+                <div class="more-dets flex">
+                    <span class="year">{{movieData.release_date | year}}</span> | <span class="pg">{{movieData.ratings}}</span> | <span class="runtime">{{movieData.runtime | runtime}}</span>
+                </div>
+            </div>
+            <div class="details flex">
+                <div class="collection flex">
+                    <div class="watched flex" (click)="addToCollection('watched')" [ngClass]="{ gold: movieData.collection.watched }">
+                        <i class="ri-checkbox-circle-fill"></i>
+                        Watched
+                    </div>
+                    <div class="watchlist flex" (click)="addToCollection('watchlist')" [ngClass]="{ gold: movieData.collection.watchlist }">
+                        <i class="ri-time-fill"></i>
+                        Watchlist
+                    </div>
+                </div>
+                <div class="title">
+                    <span>{{movieData.title}}</span>
+                    <span class="rating">{{movieData.vote_average}}</span>
+                </div>
+                <span class="sub-title">{{movieData.tagline}}</span>
+                <div class="dets">
+                    <span><b>Genres</b></span>
+                    <span>{{movieData.genres}}.</span>
+                </div>
+                <div class="dets">
+                    <span><b>Production</b></span>
+                    <span>{{movieData.production_companies_string}}</span>
+                </div>
+                <div class="dets">
+                    <span><b>Director{{movieData.directors.length > 1 ? 's' : ''}}</b></span>
+                    <span>{{ getDirectors() }}.</span>
+                </div>
+                <div class="dets">
+                    <span><b>Budget</b></span>
+                    <span>{{movieData.budget | money}} Dollars.</span>
+                </div>
+                <div class="dets">
+                    <span><b>Box office</b></span>
+                    <span>{{movieData.revenue | money}} Dollars.</span>
+                </div>
+                <p class="story">{{movieData.overview}}</p>
+            </div>
+        </div>
+        <div class="wide">
+            <mm-cast *ngIf="movieData.cast" [cast]="movieData.cast"></mm-cast>
+            <mm-more-movies *ngIf="movieData.similar" [movies]="movieData.similar"></mm-more-movies>
+        </div>
+    </ng-container>
 </div>

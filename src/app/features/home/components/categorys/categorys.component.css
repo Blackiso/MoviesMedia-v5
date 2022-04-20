@@ -22,6 +22,14 @@
 	font-size: 30px;
 }
 
+.slider-button-left {
+	margin-right: 10px;
+}
+
+.slider-button-right {
+	margin-left: 10px;
+}
+
 .category-title {
 	width: 100%;
     padding: 5px 0;

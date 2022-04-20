@@ -2,36 +2,39 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UtilService } from '@core/services/util.service';
 import { MoviesApi } from '@core/interfaces/movies-api';
+import { ENDPOINTS } from '@core/api.config';
+import { FilterObject } from '@shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiscoverService implements MoviesApi {
 
-	private url:string = "/mock/movies-list.php";
 	private params:any = {}; 
 
 	constructor(private http:HttpClient, private util:UtilService) {}
 
-	getMovies(type, page?) {
-		if (page) {
-			this.params.page = page;
-		}else {
-			delete this.params.page;
-		}
-		this.params.type = type;
-		return this.http.get<any>(this.buildUrl());
+	getMovies(type, page = 1, filterObject:FilterObject = {}) {
+		this.params = filterObject;
+		this.params.page = page;
+		let url = type == 'search' ? ENDPOINTS.search : ENDPOINTS.discover.replace(':type', type);
+		return this.http.get<any>(this.buildUrl(url));
 	}
 
-	buildUrl() {
-		return this.url+this.util.createQueryParams(this.params);;
+	getFilterMovies(filter, page = 1) {
+		// filter.page = page;
+		// return this.http.get<any>(this.buildUrl(ENDPOINTS.filter, filter));
 	}
 
-	setParams(params) {
-		this.params = {...this.params, ...params};
+	getSearchMovies(keyword, page = 1) {
+		// return this.http.get<any>(this.buildUrl(ENDPOINTS.search, { page, keyword }));
 	}
 
-	clearParams() {
-		this.params = {};
+	buildUrl(url:string):string {
+		return url+this.util.createQueryParams(this.params);
 	}
+
 }
+
+
+   

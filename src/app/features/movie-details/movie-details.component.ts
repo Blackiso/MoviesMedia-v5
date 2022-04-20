@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, OnDestroy, ElementRef, HostBinding, Renderer2 } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { UtilService } from '@core/services/util.service';
 import { Location } from '@angular/common';
-import { ActivatedRoute, NavigationStart, NavigationEnd, ActivationEnd } from '@angular/router';
+import { ActivatedRoute, ActivationEnd } from '@angular/router';
+import { MoviesService } from '@core/services/movies.service';
 
 
 @Component({
@@ -11,199 +12,41 @@ import { ActivatedRoute, NavigationStart, NavigationEnd, ActivationEnd } from '@
 })
 export class MovieDetailsComponent implements OnInit {
 
-	@Input() movieID:number;
+	private movieID:number;
 	@HostBinding('class.overlay') isOverlay: boolean = false;
 
 	movieData:any;
-	movieCast:any = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
-	movies:any = [
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg",
-			"release_year": 2018,
-			"title": "Mission: Impossible - Fallout",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/y95lQLnuNKdPAzw9F9Ab8kJ80c3.jpg",
-			"release_year": 2020,
-			"title": "Bad Boys for Life",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/AuGiPiGMYMkSosOJ3BQjDEAiwtO.jpg",
-			"release_year": 2019,
-			"title": "1917",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/yJdeWaVXa2se9agI6B4mQunVYkB.jpg",
-			"release_year": 2019,
-			"title": "Ip Man 4: The Finale",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
-			"release_year": 2019,
-			"title": "Star Wars: The Rise of Skywalker",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/jyw8VKYEiM1UDzPB7NsisUgBeJ8.jpg",
-			"release_year": 2019,
-			"title": "Jumanji: The Next Level",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/vloNTScJ3w7jwNwtNGoG8DbTThv.jpg",
-			"release_year": 2019,
-			"title": "Maleficent: Mistress of Evil",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg",
-			"release_year": 2018,
-			"title": "Mission: Impossible - Fallout",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/vloNTScJ3w7jwNwtNGoG8DbTThv.jpg",
-			"release_year": 2019,
-			"title": "Maleficent: Mistress of Evil",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/jyw8VKYEiM1UDzPB7NsisUgBeJ8.jpg",
-			"release_year": 2019,
-			"title": "Jumanji: The Next Level",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg",
-			"release_year": 2019,
-			"title": "Frozen II",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/jyw8VKYEiM1UDzPB7NsisUgBeJ8.jpg",
-			"release_year": 2019,
-			"title": "Jumanji: The Next Level",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/yJdeWaVXa2se9agI6B4mQunVYkB.jpg",
-			"release_year": 2019,
-			"title": "Ip Man 4: The Finale",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg",
-			"release_year": 2018,
-			"title": "Mission: Impossible - Fallout",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		},
-		{
-			"id": 353081,
-			"genres": ["Action", "Adventure"],
-			"poster_path": "/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg",
-			"release_year": 2018,
-			"title": "Mission: Impossible - Fallout",
-			"collection": {
-				"watched": false,
-				"watchList": false
-			}
-		}
-	];
 	openVideo:boolean = false;
 	subscriptions:any = [];
+	loading:boolean = true;
 
 	constructor(
 		private util:UtilService, 
 		private location:Location, 
-		private elementRef:ElementRef, 
-		private renderer:Renderer2,
-		private activeRoute:ActivatedRoute
-	) {
-	}
+		private activeRoute:ActivatedRoute,
+		private moviesService:MoviesService
+	) {}
 
 	ngOnInit() {		
-		let dataEvent = this.activeRoute.data.subscribe(
+		this.activeRoute.data.subscribe(
 			data => { 
 				if (data.overlay) {
 					this.isOverlay = true;
-					this.location.replaceState('/movie/'+Math.random());
 				}
 			}
 		);
+
+		this.activeRoute.params.subscribe(params => {
+            this.movieID = params['movie-id'];
+            if (this.isOverlay) {
+        		this.location.replaceState('/movie/'+this.movieID);
+        	}
+            this.moviesService.getMovie(this.movieID).subscribe(data => {
+            	this.movieData = data;
+            	this.loading = false;
+            });
+
+        });
 
 		if (this.isOverlay) {
 			let routerEvents = this.util.router.events.subscribe(event => {
@@ -211,8 +54,14 @@ export class MovieDetailsComponent implements OnInit {
 			});
 			this.subscriptions.push(routerEvents);
 		}
+	}
 
-		this.subscriptions.push(dataEvent);
+	getDirectors() {
+		return this.movieData.directors.map(d => d.name).join(', ');
+	}
+
+	addToCollection(type:string) {
+		this.moviesService.addMovieToCollection(this.movieData.id, this.movieData.collection, type).subscribe();
 	}
 
 	closeDetails() {

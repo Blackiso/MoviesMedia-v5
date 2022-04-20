@@ -11,11 +11,8 @@
 				<div><i class="toggle-arrow ri-arrow-down-s-fill"></i></div>
 			</div>
 			<div class="option-prop flex">
-				<select multiple name="cat">
-					<option value="1">Action</option>
-					<option value="2">Comedy</option>
-					<option value="3">Fantasy</option>
-					<option value="4">Animation</option>
+				<select multiple name="genres">
+					<option *ngFor="let g of genres" [value]="g.id">{{g.name}}</option>
 				</select>
 			</div>
 		</div>
@@ -25,7 +22,7 @@
 				<div><i class="toggle-arrow ri-arrow-down-s-fill"></i></div>
 			</div>
 			<div class="option-prop flex">
-				<input type="text" placeholder="ex. 2020" name="year">
+				<input type="number" placeholder="ex. 2020" name="year">
 			</div>
 		</div>
 		<div class="option flex">
@@ -34,7 +31,7 @@
 				<div><i class="toggle-arrow ri-arrow-down-s-fill"></i></div>
 			</div>
 			<div class="option-prop flex">
-				<input type="text" placeholder="ex. 7.2" name="rating">
+				<input type="number" placeholder="ex. 7.2" name="vote">
 			</div>
 		</div>
 		<div class="option flex">

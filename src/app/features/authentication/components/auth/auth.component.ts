@@ -36,7 +36,6 @@ export class AuthComponent {
 			.catch(data => {
 				this.stopLoading();
 			});
-
 	}
 
 	stopLoading() {

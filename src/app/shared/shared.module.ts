@@ -15,6 +15,12 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ToggleElementDirective } from './directives/toggle-element.directive';
 import { FormComponent } from './components/form/form.component';
 import { ButtonComponent } from './components/button/button.component';
+import { MoneyPipe } from './pipes/money.pipe';
+import { RuntimePipe } from './pipes/runtime.pipe';
+import { YearPipe } from './pipes/year.pipe';
+import { TextPipe } from './pipes/text.pipe';
+import { SafePipe } from './pipes/safe.pipe';
+import { ListSliderComponent } from './components/list-slider/list-slider.component';
 
 
 @NgModule({
@@ -31,7 +37,13 @@ import { ButtonComponent } from './components/button/button.component';
   	LoadingComponent,
   	ToggleElementDirective,
     FormComponent,
-    ButtonComponent
+    ButtonComponent,
+    MoneyPipe,
+    RuntimePipe,
+    YearPipe,
+    TextPipe,
+    SafePipe,
+    ListSliderComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +61,13 @@ import { ButtonComponent } from './components/button/button.component';
     FormsDirective,
     ToggleElementDirective,
     FormComponent,
-    ButtonComponent
+    ButtonComponent,
+    MoneyPipe,
+    RuntimePipe,
+    YearPipe,
+    TextPipe,
+    SafePipe,
+    ListSliderComponent
   ]
 })
 export class SharedModule { }

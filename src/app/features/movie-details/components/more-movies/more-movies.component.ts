@@ -8,19 +8,12 @@ import { UtilService } from '@core/services/util.service';
 })
 export class MoreMoviesComponent implements OnInit {
 
-	@ViewChild('moviesSlider') moviesSlider:any;
 	@Input() movies:any;
-	private slidesCount:number;
 
 	constructor(private util:UtilService) {
 	}
 
 	ngOnInit() {
-		this.slidesCount = Math.ceil(this.movies.length/6);
-	}
-
-	moveSlider(direction) {
-		this.moviesSlider.moveSlider(direction);
 	}
 
 }

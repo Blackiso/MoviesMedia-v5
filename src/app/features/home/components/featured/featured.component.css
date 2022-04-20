@@ -43,6 +43,7 @@
 	flex-direction: column;
 	color: white;
 	text-align: center;
+	align-items: center;
 }
 
 .title {
@@ -54,9 +55,13 @@
 }
 
 .tagline {
-	font-size: 20px;
+	font-size: 14px;
     color: #d6d0d0;
     margin-bottom: 30px;
+    text-align: center;
+    white-space: break-spaces;
+    max-width: 801px;
+	margin-top: 10px;
 }
 
 .more-info {

@@ -1,41 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UtilService } from '@core/services/util.service';
 import { UserService } from '@core/services/user.service';
+import { ENDPOINTS } from '@core/api.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-	private loginUrl:string = "/mock/login.php";
-
 	constructor(
 		private http:HttpClient, 
-		private util:UtilService,
 		private userService:UserService
 	) { }
 
 	httpRequest(url, data) {
-		let form = this.util.createFormData(data);
-		return this.http.post<any>(this.loginUrl, form);
+		return this.http.post<any>(url, data);
 	}
 
 	runAuthentication(to, data) {
-		let paramSub;
-		let url = this[to+'Url'];
 		return new Promise<any>((resolve, reject) => {
-			this.httpRequest(url, data).toPromise()
+			this.httpRequest(ENDPOINTS[to], data).toPromise()
 				.then(loginData => {
-					console.log('login ', loginData);
-					this.userService.key = loginData.key || null;
+					this.userService.setToken(loginData);
+					this.userService.saveToken();
 					return this.userService.authenticate();
 				})
 				.then(authData => {
-					if (!authData.auth) reject(authData);
+					if (!authData.username) reject(authData);
 					resolve(authData);
 				})
-				.catch(x => console.log(x));
+				.catch(x => {
+					reject(x);
+				});
 		});
 	}
 }

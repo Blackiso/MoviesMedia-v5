@@ -13,10 +13,10 @@ export class UnautheticatedGuard implements CanActivate {
 	constructor(private userService:UserService, private util:UtilService) {}
 
 	canActivate( next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-		if (this.userService.is_loggedInValue) {
+		if (this.userService.loginStateValue()) {
     		this.util.navigateTo('/home');
     	}
-		return !this.userService.is_loggedInValue;
+		return !this.userService.loginStateValue();
 	}
   
 }
